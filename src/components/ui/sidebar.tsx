@@ -1,6 +1,16 @@
 import { useState } from "react";
 import {
   Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -18,6 +28,7 @@ import {
   IconHomeFilled,
   IconMessageCircle,
   IconMessageCircleFilled,
+  IconRocket,
   IconTools,
   IconToolsOff,
 } from "@tabler/icons-react";
@@ -209,15 +220,102 @@ export const Sidebar = () => {
         </div>
         <div className="flex flex-col w-full">
           <div className="flex flex-row p-4 border-b-2 border-white border-opacity-10 justify-between w-full">
-            <Button
-              onClick={() => console.log("s")}
-              className="flex flex-row px-2 rounded-md hover:bg-workspace_name_bg gap-1"
-            >
-              <span className="text-white leading-none my-auto font-lato font-bold text-base">
-                DesignersKR
-              </span>
-              <IconCaretDownFilled className="text-white my-auto" />
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  onClick={() => console.log("s")}
+                  className="flex outline-none flex-row px-2 rounded-md hover:bg-workspace_name_bg gap-1"
+                >
+                  <span className="text-white leading-none my-auto font-lato font-bold text-base">
+                    DesignersKR
+                  </span>
+
+                  <IconCaretDownFilled className="text-white my-auto" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-64 font-lato border border-white/20">
+                <div className="flex flex-row">
+                  <div className="size-11 text-white font-lato flex transition-all justify-center font-bold rounded-xl">
+                    <span className="size-8 bg-workspace_bg rounded-md text-lg items-center my-auto justify-center flex">
+                      A
+                    </span>
+                  </div>
+                  <div className="flex flex-col my-auto">
+                    <span className="text-white text-sm font-bold opacity-60">
+                      InnoVentures
+                    </span>
+                    <span className="text-white text-xs opacity-60">
+                      innoventures-tech.slack.com
+                    </span>
+                  </div>
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="flex flex-col">
+                  <div className="flex flex-row gap-3">
+                    <IconRocket stroke={1} />
+                    <span className="leading-none text-center my-auto">
+                      Upgrade
+                    </span>
+                  </div>
+                  <span className="opacity-70 text-xs">
+                    You're on the <b>free version</b> of Slack
+                  </span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  On the free version of Slack, messages and files older than 90
+                  days will be hidden. To access your history, upgrade now.
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  Invite people to InnoVentures
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Preferences</DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    Filter sidebar
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent className="w-60">
+                      <DropdownMenuItem>Customize workspace</DropdownMenuItem>
+                      <DropdownMenuItem>Workflow Builder</DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    Tools & settings
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent className="w-60">
+                      <DropdownMenuLabel className="text-xs">
+                        Tools
+                      </DropdownMenuLabel>
+                      <DropdownMenuItem>Customize workspace</DropdownMenuItem>
+                      <DropdownMenuItem>Workflow Builder</DropdownMenuItem>
+                      <DropdownMenuItem>Workspace analytics</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuLabel className="text-xs">
+                        Administrator
+                      </DropdownMenuLabel>
+                      <DropdownMenuItem>Manage apps</DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
+                <DropdownMenuItem disabled>
+                  <div className="flex flex-col">
+                    Leave channels{" "}
+                    <p className="text-xs">
+                      Looking fresh! No new recommendation
+                    </p>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Sign in on mobile</DropdownMenuItem>
+                <DropdownMenuItem>Sign out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button className="rounded-md transition-all hover:bg-workspace_name_bg text-white opacity-70 p-1">
