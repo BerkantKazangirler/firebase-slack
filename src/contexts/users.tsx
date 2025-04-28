@@ -1,6 +1,6 @@
 import { UsersI } from "@/types";
-import { fetch } from "@/utils/fetch-data";
-import { createContext, useContext, useEffect, useState } from "react";
+// import { fetch } from "@/utils/fetch-data";
+import { createContext, useContext, useState } from "react";
 
 type DataContextType = {
   userData: UsersI[];
@@ -21,18 +21,18 @@ export const UserDataProvider = ({
 }) => {
   const [userData, setUserData] = useState<UsersI[]>([]);
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const sectionDataFetch = await fetch("users");
-        setUserData(sectionDataFetch);
-      } catch (error) {
-        console.log("hata : " + error);
-      }
-    };
+  // useEffect(() => {
+  //   const loadData = async () => {
+  //     try {
+  //       const sectionDataFetch = await fetch("users");
+  //       setUserData(sectionDataFetch);
+  //     } catch (error) {
+  //       console.log("hata : " + error);
+  //     }
+  //   };
 
-    loadData();
-  }, []);
+  //   loadData();
+  // }, []);
 
   return (
     <DataContext.Provider

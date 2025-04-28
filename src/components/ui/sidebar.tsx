@@ -57,6 +57,14 @@ export const Sidebar = () => {
     }>
   >([]);
 
+  const [userList, setUserList] = useState<
+    Array<{
+      id: string;
+      name: string;
+      photo: string;
+    }>
+  >([]);
+
   useEffect(() => {
     setChannelDatas([
       {
@@ -73,6 +81,21 @@ export const Sidebar = () => {
         id: "asd",
         name: "asd",
         public: true,
+      },
+    ]);
+
+    setUserList([
+      {
+        id: "dsadasdad",
+        name: "Ber",
+        photo:
+          "https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512",
+      },
+      {
+        id: "asasdadasdd",
+        name: "Beasdr",
+        photo:
+          "https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512",
       },
     ]);
   }, []);
@@ -500,15 +523,29 @@ export const Sidebar = () => {
                 </Tooltip>
               </div>
               <div className="flex flex-col px-2 gap-1">
-                <div className="flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm">
-                  <img
-                    src="https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512"
-                    className="size-5 rounded-sm"
-                  />
-                  <span className="text-white/50 font-medium font-lato text-sm">
-                    Berkant Kazangirler
-                  </span>
-                </div>
+                {messageListShow &&
+                  userList.map((data, index) => (
+                    <div
+                      key={index}
+                      data-page-name={data.id}
+                      onClick={(e) =>
+                        setActivePage(
+                          e.currentTarget.getAttribute("data-page-name")
+                        )
+                      }
+                      className={classNames(
+                        "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
+                        {
+                          "bg-active_channel_bg": activePage == data.id,
+                        }
+                      )}
+                    >
+                      <img src={data.photo} className="size-5 rounded-sm" />
+                      <span className="text-white/50 font-medium font-lato text-sm">
+                        {data.name}
+                      </span>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
