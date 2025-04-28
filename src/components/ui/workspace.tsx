@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "./button";
 import classNames from "classnames";
+import { IconPlus } from "@tabler/icons-react";
 
 export const Workspace = () => {
   const [activeWorkspace, setActiveWorkspace] = useState<string | null>("A");
@@ -54,6 +55,9 @@ export const Workspace = () => {
         <span className="size-8 bg-workspace_bg rounded-md text-lg items-center my-auto justify-center flex">
           C
         </span>
+      </Button>
+      <Button className="size-8 opacity-50 group text-white font-lato flex transition-all justify-center font-bold rounded-xl">
+        <IconPlus stroke={2} />
       </Button>
     </div>
   );

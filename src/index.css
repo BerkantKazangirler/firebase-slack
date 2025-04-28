@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary:#18256b;
+    --color-sidebar_bg:#0c1338; 
+  }
+}
+
+.theme-mood-indigo {
+  --color-primary:#18256b;
+  --color-sidebar_bg:#0c1338; 
+}
+
+.theme-aubergine {
+  --color-primary:#611F69;
+  --color-sidebar_bg:#DF9FF4; 
+}
