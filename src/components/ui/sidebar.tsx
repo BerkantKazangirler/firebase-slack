@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Button } from "./button";
+import {
+  Button,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components";
 import {
   IconAddressBook,
   IconAddressBookOff,
@@ -17,12 +23,6 @@ import {
 } from "@tabler/icons-react";
 import classNames from "classnames";
 import { useLayoutContext } from "@/contexts";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
 
 export const Sidebar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);

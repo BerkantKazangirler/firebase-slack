@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "./button";
+import { Button } from "@/components";
 import classNames from "classnames";
 import { IconPlus } from "@tabler/icons-react";
 

@@ -9,15 +9,15 @@ import {
   IconMenu2,
   IconProgressHelp,
 } from "@tabler/icons-react";
-import { Input } from "./input";
-import { Button } from "./button";
-import { useLayoutContext } from "@/contexts";
 import {
+  Button,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../ui/tooltip";
+  Input,
+} from "@/components";
+import { useLayoutContext } from "@/contexts";
 
 export const Header = () => {
   const { setCollapse, collapse } = useLayoutContext();

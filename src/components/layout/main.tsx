@@ -1,7 +1,5 @@
 import classNames from "classnames";
-import { Header } from "../ui/header";
-import { Sidebar } from "../ui/side-bar";
-import { Workspace } from "../ui/workspace";
+import { Workspace, Sidebar, Header } from "@/components";
 import { useLayoutContext } from "@/contexts";
 
 export const MainLayout = () => {
