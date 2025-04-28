@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   DropdownMenu,
@@ -21,14 +21,21 @@ import {
   IconAddressBookOff,
   IconBell,
   IconBellFilled,
+  IconCaretDown,
   IconCaretDownFilled,
+  IconCaretRightFilled,
   IconDots,
   IconEdit,
+  IconHash,
+  IconHeadphones,
   IconHome,
   IconHomeFilled,
+  IconLock,
   IconMessageCircle,
   IconMessageCircleFilled,
+  IconPlus,
   IconRocket,
+  IconSend2,
   IconTools,
   IconToolsOff,
 } from "@tabler/icons-react";
@@ -36,15 +43,46 @@ import classNames from "classnames";
 import { useLayoutContext } from "@/contexts";
 
 export const Sidebar = () => {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [activeMenu, setActiveMenu] = useState<string | null>("Home");
   const { collapse } = useLayoutContext();
+  const [channelListShow, setChannelListShow] = useState<boolean>(true);
+  const [messageListShow, setMessageListShow] = useState<boolean>(true);
+  const [activePage, setActivePage] = useState<string | null>("");
+
+  const [channelDatas, setChannelDatas] = useState<
+    Array<{
+      id: string;
+      name: string;
+      public: boolean;
+    }>
+  >([]);
+
+  useEffect(() => {
+    setChannelDatas([
+      {
+        id: "asdd",
+        name: "asd",
+        public: false,
+      },
+      {
+        id: "asddd",
+        name: "asd",
+        public: false,
+      },
+      {
+        id: "asd",
+        name: "asd",
+        public: true,
+      },
+    ]);
+  }, []);
 
   return (
     <TooltipProvider>
       <div className="h-full flex flex-row w-1/6 rounded-md bg-sidebar_bg">
         <div
           className={classNames(
-            "px-3 py-4 transition-all items-center flex flex-col gap-4 border-r-2 border-r-white border-opacity-10",
+            "px-3 py-4 transition-all h-full items-center flex flex-col gap-4 border-r-2 border-r-white border-opacity-10",
             {
               "bg-primary": !collapse,
             }
@@ -217,17 +255,45 @@ export const Sidebar = () => {
               </p>
             </Button>
           </div>
+
+          <div className="flex justify-end h-full gap-4 flex-col">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="bg-active_menu_bg rounded-full p-1 group">
+                  <IconPlus
+                    stroke={2}
+                    className="text-white opacity-60 group-hover:scale-125 transition-all"
+                  />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
+                <p>Create New</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <img
+                  src="https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512"
+                  className="size-8 rounded-md"
+                />
+              </TooltipTrigger>
+              <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
+                <p>Berkant 🟢</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
         </div>
         <div className="flex flex-col w-full">
-          <div className="flex flex-row p-4 border-b-2 border-white border-opacity-10 justify-between w-full">
+          <div className="flex flex-row p-4 justify-between w-full">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   onClick={() => console.log("s")}
-                  className="flex outline-none flex-row px-2 rounded-md hover:bg-workspace_name_bg gap-1"
+                  className="flex outline-none flex-row px-1 rounded-md hover:bg-workspace_name_bg gap-1"
                 >
-                  <span className="text-white leading-none my-auto font-lato font-bold text-base">
-                    DesignersKR
+                  <span className="text-white leading-none my-auto font-lato font-semibold text-lg">
+                    InnoVentures
                   </span>
 
                   <IconCaretDownFilled className="text-white my-auto" />
@@ -326,6 +392,125 @@ export const Sidebar = () => {
                 <p>New message</p>
               </TooltipContent>
             </Tooltip>
+          </div>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col px-2 gap-1">
+              <Button className="flex hover:bg-white/20 px-4 h-7 p-0.5 rounded-sm flex-row gap-1.5 text-white opacity-60 text-sm">
+                <IconMessageCircle stroke={2} className="size-5 my-auto" />
+                <span className="my-auto">Threads</span>
+              </Button>
+              <Button className="flex hover:bg-white/20 px-4 h-7 p-0.5 rounded-sm flex-row gap-1.5 text-white opacity-60 text-sm">
+                <IconHeadphones stroke={2} className="size-5 my-auto" />
+                <span className="my-auto">Huddles</span>
+              </Button>
+              <Button className="flex hover:bg-white/20 px-4 h-7 p-0.5 rounded-sm flex-row gap-1.5 text-white opacity-60 text-sm">
+                <IconSend2 stroke={2} className="size-5 my-auto" />
+                <span className="my-auto">Draft & sent</span>
+              </Button>
+            </div>
+            <div className="flex flex-col gap-1 px-4">
+              <div className="group flex gap-3 flex-row">
+                <Button
+                  onClick={() => setChannelListShow((t) => !t)}
+                  className="rounded-md hover:bg-white/10 p-1 transition-all"
+                >
+                  {channelListShow ? (
+                    <IconCaretDownFilled className="text-white/40 size-4" />
+                  ) : (
+                    <IconCaretRightFilled className="text-white/40 size-4" />
+                  )}
+                </Button>
+                <Button className="flex flex-row gap-0.5 my-auto">
+                  <span className="text-white/50 text-sm">Channels</span>
+                  <IconCaretDown
+                    stroke={1}
+                    className="text-white group-hover:opacity-50 opacity-0 transition-all size-5"
+                  />
+                </Button>
+              </div>
+              {channelListShow &&
+                channelDatas.map((data, index) => (
+                  <Button
+                    key={index}
+                    data-page-name={data.id}
+                    onClick={(e) =>
+                      setActivePage(
+                        e.currentTarget.getAttribute("data-page-name")
+                      )
+                    }
+                    className={classNames(
+                      "flex flex-row gap-3 px-1 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
+                      {
+                        "bg-active_channel_bg": activePage == data.id,
+                      }
+                    )}
+                  >
+                    {data.public ? (
+                      <IconHash stroke={2} className="text-white/40 size-4" />
+                    ) : (
+                      <IconLock stroke={2} className="text-white/40 size-4" />
+                    )}
+                    <span className="text-white/50 font-medium font-lato text-sm">
+                      {data.name}
+                    </span>
+                  </Button>
+                ))}
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <div className="group w-full justify-between flex gap-3 px-4 flex-row">
+                <div className="flex flex-row gap-2">
+                  <Button
+                    onClick={() => setMessageListShow((t) => !t)}
+                    className="rounded-md hover:bg-white/10 p-1 transition-all"
+                  >
+                    {messageListShow ? (
+                      <IconCaretDownFilled className="text-white/40 size-4" />
+                    ) : (
+                      <IconCaretRightFilled className="text-white/40 size-4" />
+                    )}
+                  </Button>
+                  <Button className="flex flex-row gap-0.5 my-auto">
+                    <span className="text-white/50 text-sm">
+                      Direct messages
+                    </span>
+                    <IconCaretDown
+                      stroke={1}
+                      className="text-white group-hover:opacity-50 opacity-0 transition-all size-5"
+                    />
+                  </Button>
+                </div>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button className="hidden group-hover:bg-white/5 px-0.5 rounded-md group-hover:flex">
+                      <IconPlus stroke={2} className="text-white/40 size-5" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
+                    <p>Opan a direct message</p>
+                    <div className="flex flex-row mx-auto gap-1">
+                      <span className="bg-black rounded-sm leading-none p-1">
+                        Ctrl
+                      </span>
+                      <span className="bg-black rounded-sm leading-none p-1">
+                        N
+                      </span>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="flex flex-col px-2 gap-1">
+                <div className="flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm">
+                  <img
+                    src="https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512"
+                    className="size-5 rounded-sm"
+                  />
+                  <span className="text-white/50 font-medium font-lato text-sm">
+                    Berkant Kazangirler
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

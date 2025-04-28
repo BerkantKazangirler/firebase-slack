@@ -21,6 +21,7 @@ export default {
         menu_hover_bg: "#444a62",
         tooltip_bg: "#212428",
         sidebar_bg: "var(--color-sidebar_bg)",
+        active_channel_bg: "#263b9c",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
