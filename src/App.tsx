@@ -1,9 +1,9 @@
-import { AllPeople } from "./components/workspace/all-people";
+import { MainLayout } from "./components/layout/main";
 
 export default function App() {
   return (
     <div className="w-full h-full flex flex-col">
-      <AllPeople />
+      <MainLayout />
     </div>
   );
 }
