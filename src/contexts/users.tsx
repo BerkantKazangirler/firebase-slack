@@ -57,6 +57,19 @@ export const UserDataProvider = ({
         status: "ONLINE",
         title: null,
       },
+      {
+        id: "uvGWgBUMyVRGhHNrd7IK2",
+        name: "Test Test",
+        contact_info: {
+          email: "berkantkazangirler@gmail.com",
+          phone: "0544 339 0993",
+        },
+        display_name: "Test Test",
+        email: "berkantkazangirler@gmail.com",
+        local_time: "UTC",
+        status: "ONLINE",
+        title: null,
+      },
     ]);
 
     setUserData({

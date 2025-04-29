@@ -37,12 +37,9 @@ export const WorkspaceContextProvider = ({
           owner: "uvGWgBUMyVRGhHNrd7IK",
         },
         description: "test",
-        members: {
-          0: "uvGWgBUMyVRGhHNrd7IK",
-          1: "NEVpDiIIn02JSYaYpXnj",
-        },
         name: "karabuk_ofis",
         public: true,
+        members: ["NEVpDiIIn02JSYaYpXnj", "uvGWgBUMyVRGhHNrd7IK"],
       },
       {
         id: "Z8hOz3sXZJNtvSezyPVJ",
@@ -51,9 +48,7 @@ export const WorkspaceContextProvider = ({
           owner: "NEVpDiIIn02JSYaYpXnj",
         },
         description: "test",
-        members: {
-          0: "NEVpDiIIn02JSYaYpXnj",
-        },
+        members: ["NEVpDiIIn02JSYaYpXnj", "uvGWgBUMyVRGhHNrd7IK"],
         name: "coffe-break",
         public: false,
       },
@@ -65,31 +60,23 @@ export const WorkspaceContextProvider = ({
         title: "InnoVentures",
         url: "innoventures-tech.slack.com",
         premium: true,
+        photo: undefined,
         premium_date: {
           day: 29,
           month: 4,
         },
-        channels: {
-          0: "4QBgJ84ykpjTBKzLj63h",
-          1: "Z8hOz3sXZJNtvSezyPVJ",
-        },
-        users: {
-          0: "uvGWgBUMyVRGhHNrd7IK",
-          1: "NEVpDiIIn02JSYaYpXnj",
-        },
+        channels: ["4QBgJ84ykpjTBKzLj63h", "Z8hOz3sXZJNtvSezyPVJ"],
+        users: ["NEVpDiIIn02JSYaYpXnj", "uvGWgBUMyVRGhHNrd7IK"],
       },
       {
         id: "innoventures_user_0012",
-        title: "InnoVentures2",
+        title: "Inno Ventures 2",
+        photo:
+          "https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512",
         url: "innoventures-tech.slack.com2",
         premium: false,
-        channels: {
-          0: "4QBgJ84ykpjTBKzLj63h",
-        },
-        users: {
-          0: "uvGWgBUMyVRGhHNrd7IK",
-          1: "NEVpDiIIn02JSYaYpXnj",
-        },
+        channels: ["4QBgJ84ykpjTBKzLj63h"],
+        users: ["NEVpDiIIn02JSYaYpXnj", "uvGWgBUMyVRGhHNrd7IK"],
       },
     ]);
   }, []);

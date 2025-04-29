@@ -5,7 +5,7 @@ export interface ChannelsI {
     owner: string;
   };
   description: string;
-  members: Record<string, string>;
+  members: string[];
   name: string;
   public: boolean;
 }

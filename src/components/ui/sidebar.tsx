@@ -16,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components";
+import Avatar from "react-avatar";
 import { GoHome, GoHomeFill, GoPlus } from "react-icons/go";
 import { TbDots, TbEdit, TbMessage2, TbTools } from "react-icons/tb";
 import { LuSendHorizontal } from "react-icons/lu";
@@ -51,6 +52,10 @@ export const Sidebar = () => {
 
   const takvim = monthNames[ay] + " " + gün;
 
+  const activeWorkspaceDatas = workspaces.find(
+    (data) => data.id === activeWorkspace
+  );
+
   return (
     <TooltipProvider>
       <div className="h-full flex flex-row w-1/6 rounded-md bg-sidebar_bg">
@@ -71,9 +76,12 @@ export const Sidebar = () => {
               }
             )}
           >
-            <span className="size-9 shadow-md shadow-white/40 bg-workspace_bg rounded-md text-lg items-center my-auto justify-center flex">
-              A
-            </span>
+            <Avatar
+              name={activeWorkspaceDatas?.title}
+              size="40"
+              src={activeWorkspaceDatas?.photo}
+              className="shadow-md shadow-white/40 bg-workspace_bg rounded-md text-lg items-center my-auto justify-center flex"
+            />
           </Button>
 
           <div
@@ -263,9 +271,12 @@ export const Sidebar = () => {
                   <DropdownMenuContent className="w-64 font-lato border border-white/20">
                     <div className="flex flex-row">
                       <div className="size-11 text-white font-lato flex transition-all justify-center font-bold rounded-xl">
-                        <span className="size-8 bg-workspace_bg rounded-md text-lg items-center my-auto justify-center flex">
-                          A
-                        </span>
+                        <Avatar
+                          name={data.title}
+                          src={data.photo}
+                          size="32"
+                          className="rounded-md my-auto bg-workspace_bg"
+                        />
                       </div>
                       <div className="flex flex-col my-auto">
                         <span className="text-white text-sm font-bold opacity-60">
@@ -412,38 +423,49 @@ export const Sidebar = () => {
                     </Button>
                   </div>
 
-                  {channelDatas
-                    .filter(
-                      (dataa) =>
-                        data.channels &&
-                        Object.values(data.channels).includes(dataa.id)
-                    )
-                    .map((data, index) => (
-                      <Button
-                        key={index}
-                        data-page-name={data.id}
-                        onClick={(e) =>
-                          setActivePage(
-                            e.currentTarget.getAttribute("data-page-name")
-                          )
-                        }
-                        className={classNames(
-                          "flex flex-row gap-3 px-1 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
-                          {
-                            "bg-active_channel_bg": activePage == data.id,
+                  {channelListShow &&
+                    channelDatas
+                      .filter(
+                        (dataa) =>
+                          data.channels &&
+                          Object.values(data.channels).includes(dataa.id)
+                      )
+                      .map((data, index) => (
+                        <Button
+                          key={index}
+                          data-page-name={data.id}
+                          onClick={(e) =>
+                            setActivePage(
+                              e.currentTarget.getAttribute("data-page-name")
+                            )
                           }
-                        )}
-                      >
-                        {data.public ? (
-                          <FaHashtag className="text-white/40 size-4" />
-                        ) : (
-                          <CgLock className="text-white/40 size-4" />
-                        )}
-                        <span className="text-white/50 font-medium font-lato text-sm">
-                          {data.name}
-                        </span>
-                      </Button>
-                    ))}
+                          className={classNames(
+                            "flex flex-row gap-3 px-1 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
+                            {
+                              "bg-active_channel_bg": activePage == data.id,
+                            }
+                          )}
+                        >
+                          {data.public ? (
+                            <FaHashtag className="text-white/40 size-4" />
+                          ) : (
+                            <CgLock className="text-white/40 size-4" />
+                          )}
+                          <span className="text-white/50 font-medium font-lato text-sm">
+                            {data.name}
+                          </span>
+                        </Button>
+                      ))}
+                  {channelListShow && (
+                    <Button className="flex flex-row hover:bg-white/10 rounded-sm p-1 gap-2">
+                      <div className="bg-[#0f1530] rounded-sm p-0.5">
+                        <GoPlus className="text-white" />
+                      </div>
+                      <span className="text-white/40 font-lato text-sm">
+                        Add channels
+                      </span>
+                    </Button>
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-1">
@@ -487,51 +509,61 @@ export const Sidebar = () => {
                   </div>
                   <div className="flex flex-col px-2 gap-1">
                     {messageListShow &&
-                      userList.map((data, index) => (
-                        <div
-                          key={index}
-                          data-page-name={data.id}
-                          onClick={(e) =>
-                            setActivePage(
-                              e.currentTarget.getAttribute("data-page-name")
-                            )
-                          }
-                          className={classNames(
-                            "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
-                            {
-                              "bg-active_channel_bg": activePage == data.id,
+                      userList
+                        .filter((data) => data.id !== userData?.id)
+                        .map((data, index) => (
+                          <div
+                            key={index}
+                            data-page-name={data.id}
+                            onClick={(e) =>
+                              setActivePage(
+                                e.currentTarget.getAttribute("data-page-name")
+                              )
                             }
-                          )}
-                        >
-                          <img src={data.photo} className="size-5 rounded-sm" />
-                          <span className="text-white/50 font-medium font-lato text-sm">
-                            {data.name}
-                          </span>
-                        </div>
-                      ))}
-                    <div
-                      key={index}
-                      data-page-name={userData?.id}
-                      onClick={(e) =>
-                        setActivePage(
-                          e.currentTarget.getAttribute("data-page-name")
-                        )
-                      }
-                      className={classNames(
-                        "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
-                        {
-                          "bg-active_channel_bg": activePage == userData?.id,
+                            className={classNames(
+                              "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
+                              {
+                                "bg-active_channel_bg": activePage == data.id,
+                              }
+                            )}
+                          >
+                            <img
+                              src={data.photo}
+                              className="size-5 rounded-sm"
+                            />
+                            <span className="text-white/50 font-medium font-lato text-sm">
+                              {data.name}
+                            </span>
+                          </div>
+                        ))}
+                    {messageListShow && (
+                      <div
+                        key={index}
+                        data-page-name={userData?.id}
+                        onClick={(e) =>
+                          setActivePage(
+                            e.currentTarget.getAttribute("data-page-name")
+                          )
                         }
-                      )}
-                    >
-                      <img
-                        src={userData?.photo}
-                        className="size-5 rounded-sm"
-                      />
-                      <span className="text-white/50 font-medium font-lato text-sm">
-                        {userData?.name}
-                      </span>
-                    </div>
+                        className={classNames(
+                          "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
+                          {
+                            "bg-active_channel_bg": activePage == userData?.id,
+                          }
+                        )}
+                      >
+                        <img
+                          src={userData?.photo}
+                          className="size-5 rounded-sm"
+                        />
+                        <span className="text-white/50 font-medium font-lato text-sm">
+                          {userData?.display_name}
+                        </span>
+                        <span className="text-white/20 font-medium font-lato text-sm">
+                          you
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

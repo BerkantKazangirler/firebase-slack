@@ -1,13 +1,14 @@
 export interface WorkSpaceI {
   id: string;
-  channels: Record<string, string> | undefined;
+  channels: string[];
   title: string;
-  users: Record<string, string> | undefined;
+  users: string[];
   premium: boolean;
   premium_date?: {
     day: number;
     month: number;
   };
+  photo: string | undefined;
   url: string;
 }
 
