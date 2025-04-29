@@ -1,14 +1,12 @@
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
+import { LuClock3 } from "react-icons/lu";
 import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-  IconCaretLeftFilled,
-  IconCaretRightFilled,
-  IconClockHour2,
-  IconLayoutSidebarLeftCollapse,
-  IconLayoutSidebarLeftExpand,
-  IconMenu2,
-  IconProgressHelp,
-} from "@tabler/icons-react";
+  TbLayoutSidebarLeftCollapse,
+  TbLayoutSidebarLeftCollapseFilled,
+} from "react-icons/tb";
+import { TfiHelpAlt } from "react-icons/tfi";
+import { RxHamburgerMenu } from "react-icons/rx";
 import {
   Button,
   Tooltip,
@@ -26,7 +24,7 @@ export const Header = () => {
     <TooltipProvider>
       <div className="w-full flex flex-row p-2 justify-between">
         <div className="flex flex-row gap-8 px-3">
-          <IconMenu2 stroke={2} className="text-white" />
+          <RxHamburgerMenu className="text-white" />
 
           <Tooltip>
             <TooltipTrigger asChild>
@@ -35,15 +33,9 @@ export const Header = () => {
                 className="opacity-80"
               >
                 {collapse ? (
-                  <IconLayoutSidebarLeftExpand
-                    stroke={2}
-                    className="text-white"
-                  />
+                  <TbLayoutSidebarLeftCollapse className="text-white size-5" />
                 ) : (
-                  <IconLayoutSidebarLeftCollapse
-                    stroke={2}
-                    className="text-white"
-                  />
+                  <TbLayoutSidebarLeftCollapseFilled className="text-white size-5" />
                 )}
               </Button>
             </TooltipTrigger>
@@ -65,7 +57,7 @@ export const Header = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button>
-                <IconArrowNarrowLeft stroke={2} className="text-white" />
+                <GoArrowLeft className="text-white" />
               </Button>
             </TooltipTrigger>
             <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
@@ -74,17 +66,14 @@ export const Header = () => {
                 <span className="bg-black rounded-sm leading-none p-1">
                   Alt
                 </span>
-                <IconCaretLeftFilled
-                  stroke={2}
-                  className="bg-black rounded-sm size-5 leading-none"
-                />
+                <FaCaretLeft className="bg-black rounded-sm size-5 leading-none" />
               </div>
             </TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button>
-                <IconArrowNarrowRight stroke={2} className="text-white" />
+                <GoArrowRight className="text-white" />
               </Button>
             </TooltipTrigger>
             <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
@@ -93,16 +82,13 @@ export const Header = () => {
                 <span className="bg-black rounded-sm leading-none p-1">
                   Alt
                 </span>
-                <IconCaretRightFilled
-                  stroke={2}
-                  className="bg-black rounded-sm size-5 leading-none"
-                />
+                <FaCaretRight className="bg-black rounded-sm size-5 leading-none" />
               </div>
             </TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild className="cursor-pointer">
-              <IconClockHour2 stroke={2} className="text-white p-0.5" />
+              <LuClock3 className="text-white p-0.5 my-auto" />
             </TooltipTrigger>
             <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
               <p>History</p>
@@ -129,7 +115,7 @@ export const Header = () => {
         </div>
         <Tooltip>
           <TooltipTrigger asChild className="cursor-pointer">
-            <IconProgressHelp stroke={2} className="text-white" />
+            <TfiHelpAlt className="text-white" />
           </TooltipTrigger>
           <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
             <p>Help</p>

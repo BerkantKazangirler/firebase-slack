@@ -16,29 +16,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components";
-import {
-  IconAddressBook,
-  IconAddressBookOff,
-  IconBell,
-  IconBellFilled,
-  IconCaretDown,
-  IconCaretDownFilled,
-  IconCaretRightFilled,
-  IconDots,
-  IconEdit,
-  IconHash,
-  IconHeadphones,
-  IconHome,
-  IconHomeFilled,
-  IconLock,
-  IconMessageCircle,
-  IconMessageCircleFilled,
-  IconPlus,
-  IconRocket,
-  IconSend2,
-  IconTools,
-  IconToolsOff,
-} from "@tabler/icons-react";
+import { GoHome, GoHomeFill, GoPlus } from "react-icons/go";
+import { TbDots, TbEdit, TbMessage2, TbTools } from "react-icons/tb";
+import { LuSendHorizontal } from "react-icons/lu";
+import { IoRocketOutline } from "react-icons/io5";
+import { FaCaretDown, FaCaretRight, FaHashtag } from "react-icons/fa";
+import { PiAddressBookBold, PiAddressBookFill } from "react-icons/pi";
+import { CgLock, CgHeadset } from "react-icons/cg";
+import { BiBell, BiSolidBell } from "react-icons/bi";
+import { HiOutlineChatAlt2 } from "react-icons/hi";
+import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import classNames from "classnames";
 import { useLayoutContext } from "@/contexts";
 
@@ -147,12 +134,9 @@ export const Sidebar = () => {
                 )}
               >
                 {activeMenu == "Home" ? (
-                  <IconHomeFilled className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
+                  <GoHomeFill className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
                 ) : (
-                  <IconHome
-                    stroke={2}
-                    className="group-hover:scale-125 size-5 text-white transition-all"
-                  />
+                  <GoHome className="group-hover:scale-125 size-5 text-white transition-all" />
                 )}
               </div>
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
@@ -172,12 +156,9 @@ export const Sidebar = () => {
                 )}
               >
                 {activeMenu == "Message" ? (
-                  <IconMessageCircleFilled className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
+                  <HiChatBubbleLeftRight className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
                 ) : (
-                  <IconMessageCircle
-                    stroke={2}
-                    className="group-hover:scale-125 size-5 text-white transition-all"
-                  />
+                  <HiOutlineChatAlt2 className="group-hover:scale-125 size-5 text-white transition-all" />
                 )}
               </div>
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
@@ -197,12 +178,9 @@ export const Sidebar = () => {
                 )}
               >
                 {activeMenu == "Activity" ? (
-                  <IconBellFilled className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
+                  <BiSolidBell className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
                 ) : (
-                  <IconBell
-                    stroke={2}
-                    className="group-hover:scale-125 size-5 text-white transition-all"
-                  />
+                  <BiBell className="group-hover:scale-125 size-5 text-white transition-all" />
                 )}
               </div>
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
@@ -222,12 +200,9 @@ export const Sidebar = () => {
                 )}
               >
                 {activeMenu == "Templates" ? (
-                  <IconToolsOff className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
+                  <TbTools className="group-hover:scale-125 size-5 fill-white leading-none w-fit transition-all" />
                 ) : (
-                  <IconTools
-                    stroke={2}
-                    className="group-hover:scale-125 size-5 text-white transition-all"
-                  />
+                  <TbTools className="group-hover:scale-125 size-5 text-white transition-all" />
                 )}
               </div>
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
@@ -247,12 +222,9 @@ export const Sidebar = () => {
                 )}
               >
                 {activeMenu == "People" ? (
-                  <IconAddressBookOff className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
+                  <PiAddressBookFill className="group-hover:scale-125 size-4 leading-none w-fit text-white transition-all" />
                 ) : (
-                  <IconAddressBook
-                    stroke={2}
-                    className="group-hover:scale-125 size-5 text-white transition-all"
-                  />
+                  <PiAddressBookBold className="group-hover:scale-125 size-4 text-white transition-all" />
                 )}
               </div>
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
@@ -271,7 +243,7 @@ export const Sidebar = () => {
                   }
                 )}
               >
-                <IconDots className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
+                <TbDots className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
               </div>
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
                 People
@@ -282,11 +254,8 @@ export const Sidebar = () => {
           <div className="flex justify-end h-full gap-4 flex-col">
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="bg-active_menu_bg rounded-full p-1 group">
-                  <IconPlus
-                    stroke={2}
-                    className="text-white opacity-60 group-hover:scale-125 transition-all"
-                  />
+                <div className="bg-active_menu_bg rounded-full w-fit mx-auto p-1 group">
+                  <GoPlus className="text-white opacity-60 group-hover:scale-125 transition-all" />
                 </div>
               </TooltipTrigger>
               <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
@@ -319,7 +288,7 @@ export const Sidebar = () => {
                     InnoVentures
                   </span>
 
-                  <IconCaretDownFilled className="text-white my-auto" />
+                  <FaCaretDown className="text-white my-auto" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-64 font-lato border border-white/20">
@@ -341,7 +310,7 @@ export const Sidebar = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="flex flex-col">
                   <div className="flex flex-row gap-3">
-                    <IconRocket stroke={1} />
+                    <IoRocketOutline />
                     <span className="leading-none text-center my-auto">
                       Upgrade
                     </span>
@@ -408,7 +377,7 @@ export const Sidebar = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button className="rounded-md transition-all hover:bg-workspace_name_bg text-white opacity-70 p-1">
-                  <IconEdit stroke={2} className="size-5" />
+                  <TbEdit className="size-5" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
@@ -419,15 +388,15 @@ export const Sidebar = () => {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col px-2 gap-1">
               <Button className="flex hover:bg-white/20 px-4 h-7 p-0.5 rounded-sm flex-row gap-1.5 text-white opacity-60 text-sm">
-                <IconMessageCircle stroke={2} className="size-5 my-auto" />
+                <TbMessage2 className="size-5 my-auto" />
                 <span className="my-auto">Threads</span>
               </Button>
               <Button className="flex hover:bg-white/20 px-4 h-7 p-0.5 rounded-sm flex-row gap-1.5 text-white opacity-60 text-sm">
-                <IconHeadphones stroke={2} className="size-5 my-auto" />
+                <CgHeadset className="size-5 my-auto" />
                 <span className="my-auto">Huddles</span>
               </Button>
               <Button className="flex hover:bg-white/20 px-4 h-7 p-0.5 rounded-sm flex-row gap-1.5 text-white opacity-60 text-sm">
-                <IconSend2 stroke={2} className="size-5 my-auto" />
+                <LuSendHorizontal className="size-5 my-auto" />
                 <span className="my-auto">Draft & sent</span>
               </Button>
             </div>
@@ -438,17 +407,14 @@ export const Sidebar = () => {
                   className="rounded-md hover:bg-white/10 p-1 transition-all"
                 >
                   {channelListShow ? (
-                    <IconCaretDownFilled className="text-white/40 size-4" />
+                    <FaCaretDown className="text-white/40 size-4" />
                   ) : (
-                    <IconCaretRightFilled className="text-white/40 size-4" />
+                    <FaCaretRight className="text-white/40 size-4" />
                   )}
                 </Button>
                 <Button className="flex flex-row gap-0.5 my-auto">
                   <span className="text-white/50 text-sm">Channels</span>
-                  <IconCaretDown
-                    stroke={1}
-                    className="text-white group-hover:opacity-50 opacity-0 transition-all size-5"
-                  />
+                  <FaCaretDown className="text-white group-hover:opacity-50 opacity-0 transition-all size-5" />
                 </Button>
               </div>
               {channelListShow &&
@@ -469,9 +435,9 @@ export const Sidebar = () => {
                     )}
                   >
                     {data.public ? (
-                      <IconHash stroke={2} className="text-white/40 size-4" />
+                      <FaHashtag className="text-white/40 size-4" />
                     ) : (
-                      <IconLock stroke={2} className="text-white/40 size-4" />
+                      <CgLock className="text-white/40 size-4" />
                     )}
                     <span className="text-white/50 font-medium font-lato text-sm">
                       {data.name}
@@ -488,25 +454,22 @@ export const Sidebar = () => {
                     className="rounded-md hover:bg-white/10 p-1 transition-all"
                   >
                     {messageListShow ? (
-                      <IconCaretDownFilled className="text-white/40 size-4" />
+                      <FaCaretDown className="text-white/40 size-4" />
                     ) : (
-                      <IconCaretRightFilled className="text-white/40 size-4" />
+                      <FaCaretRight className="text-white/40 size-4" />
                     )}
                   </Button>
                   <Button className="flex flex-row gap-0.5 my-auto">
                     <span className="text-white/50 text-sm">
                       Direct messages
                     </span>
-                    <IconCaretDown
-                      stroke={1}
-                      className="text-white group-hover:opacity-50 opacity-0 transition-all size-5"
-                    />
+                    <FaCaretDown className="text-white group-hover:opacity-50 opacity-0 transition-all size-5" />
                   </Button>
                 </div>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button className="hidden group-hover:bg-white/5 px-0.5 rounded-md group-hover:flex">
-                      <IconPlus stroke={2} className="text-white/40 size-5" />
+                      <GoPlus className="text-white/40 size-5" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
