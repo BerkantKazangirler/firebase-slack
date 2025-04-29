@@ -5,6 +5,8 @@ type LayoutContextType = {
   setCollapse: React.Dispatch<React.SetStateAction<boolean>>;
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
+  activeWorkspace: string | null;
+  setActiveWorkspace: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 const LayoutContext = createContext<LayoutContextType>({
@@ -12,6 +14,8 @@ const LayoutContext = createContext<LayoutContextType>({
   setCollapse: () => {},
   theme: "mood-indigo",
   setTheme: () => {},
+  activeWorkspace: "",
+  setActiveWorkspace: () => {},
 });
 
 export const useLayoutContext = () => useContext(LayoutContext);
@@ -24,6 +28,10 @@ export const LayoutContextProvider = ({
   const [collapse, setCollapse] = useState<boolean>(false);
   const [theme, setTheme] = useState<string>("mood-indigo");
 
+  const [activeWorkspace, setActiveWorkspace] = useState<string | null>(
+    "innoventures_user_001"
+  );
+
   return (
     <LayoutContext.Provider
       value={{
@@ -31,6 +39,8 @@ export const LayoutContextProvider = ({
         setCollapse,
         theme,
         setTheme,
+        activeWorkspace,
+        setActiveWorkspace,
       }}
     >
       {children}

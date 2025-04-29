@@ -1,14 +1,32 @@
 import { UsersI } from "@/types";
-// import { fetch } from "@/utils/fetch-data";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type DataContextType = {
-  userData: UsersI[];
-  setUserData: React.Dispatch<React.SetStateAction<UsersI[]>>;
+  userList: UsersI[];
+  setUserList: React.Dispatch<React.SetStateAction<UsersI[]>>;
+
+  userData: UsersI | null;
+  setUserData: React.Dispatch<React.SetStateAction<UsersI | null>>;
 };
 
 const DataContext = createContext<DataContextType>({
-  userData: [],
+  userList: [],
+  setUserList: () => {},
+
+  userData: {
+    id: "",
+    name: "",
+    photo: "",
+    contact_info: {
+      email: "",
+      phone: "",
+    },
+    display_name: "",
+    email: "",
+    local_time: "",
+    status: "ONLINE",
+    title: null,
+  },
   setUserData: () => {},
 });
 
@@ -19,24 +37,50 @@ export const UserDataProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [userData, setUserData] = useState<UsersI[]>([]);
+  const [userList, setUserList] = useState<UsersI[]>([]);
+  const [userData, setUserData] = useState<UsersI | null>(null);
 
-  // useEffect(() => {
-  //   const loadData = async () => {
-  //     try {
-  //       const sectionDataFetch = await fetch("users");
-  //       setUserData(sectionDataFetch);
-  //     } catch (error) {
-  //       console.log("hata : " + error);
-  //     }
-  //   };
+  useEffect(() => {
+    setUserList([
+      {
+        id: "uvGWgBUMyVRGhHNrd7IK",
+        name: "Berkant Kazangirler",
+        photo:
+          "https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512",
+        contact_info: {
+          email: "berkantkazangirler@gmail.com",
+          phone: "0544 339 0993",
+        },
+        display_name: "Berkant",
+        email: "berkantkazangirler@gmail.com",
+        local_time: "UTC",
+        status: "ONLINE",
+        title: null,
+      },
+    ]);
 
-  //   loadData();
-  // }, []);
+    setUserData({
+      id: "uvGWgBUMyVRGhHNrd7IK",
+      name: "Berkant Kazangirler",
+      photo:
+        "https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512",
+      contact_info: {
+        email: "berkantkazangirler@gmail.com",
+        phone: "0544 339 0993",
+      },
+      display_name: "Berkant",
+      email: "berkantkazangirler@gmail.com",
+      local_time: "UTC",
+      status: "ONLINE",
+      title: null,
+    });
+  }, []);
 
   return (
     <DataContext.Provider
       value={{
+        userList,
+        setUserList,
         userData,
         setUserData,
       }}

@@ -1,6 +1,9 @@
 export interface UsersI {
   id: string;
-  contact_info: Contact_InfoI[] | null;
+  contact_info: {
+    email: string;
+    phone: string;
+  } | null;
   display_name: string;
   email: string;
   local_time: string | null;
@@ -8,9 +11,4 @@ export interface UsersI {
   photo?: string;
   status: "ONLINE" | "AWAY" | "OFFLINE"
   title: string | null;
-}
-
-interface Contact_InfoI {
-  email: string;
-  phone: string;
 }

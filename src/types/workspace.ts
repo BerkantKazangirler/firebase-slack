@@ -1,14 +1,27 @@
 export interface WorkSpaceI {
   id: string;
-  channels: ChannelsI[];
+  channels: Record<string, string> | undefined;
   title: string;
-  users: UsersI[];
+  users: Record<string, string> | undefined;
+  premium: boolean;
+  premium_date?: {
+    day: number;
+    month: number;
+  };
+  url: string;
 }
 
-interface ChannelsI {
-  id: string;
-}
-
-interface UsersI {
-  id: string;
-}
+export const monthNames = [
+  "Ocak",
+  "Şubat",
+  "Mart",
+  "Nisan",
+  "Mayıs",
+  "Haziran",
+  "Temmuz",
+  "Ağustos",
+  "Eylül",
+  "Ekim",
+  "Kasım",
+  "Aralık",
+];

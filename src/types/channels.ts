@@ -1,17 +1,11 @@
 export interface ChannelsI {
   id: string;
-  created_by: Created_ByI[];
+  created_by: {
+    date: string;
+    owner: string;
+  };
   description: string;
-  members: MembersI[];
+  members: Record<string, string>;
   name: string;
   public: boolean;
-}
-
-interface Created_ByI {
-  date: string;
-  owner: string;
-}
-
-interface MembersI {
-  id: string;
 }

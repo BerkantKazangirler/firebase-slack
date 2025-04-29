@@ -57,7 +57,7 @@ export const Header = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button>
-                <GoArrowLeft className="text-white" />
+                <GoArrowLeft className="text-white size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
@@ -73,7 +73,7 @@ export const Header = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button>
-                <GoArrowRight className="text-white" />
+                <GoArrowRight className="text-white size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
@@ -88,7 +88,7 @@ export const Header = () => {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild className="cursor-pointer">
-              <LuClock3 className="text-white p-0.5 my-auto" />
+              <LuClock3 className="text-white size-6 my-auto" />
             </TooltipTrigger>
             <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
               <p>History</p>
@@ -98,7 +98,7 @@ export const Header = () => {
           <Tooltip>
             <TooltipTrigger asChild className="cursor-pointer">
               <Input
-                className="bg-input_bg text-sm w-full text-center opacity-80 placeholder:text-white text-white outline-none rounded-md border border-white border-opacity-20 font-lato"
+                className="bg-input_bg text-xs w-full indent-2 opacity-80 placeholder:text-white text-white outline-none rounded-md border border-white border-opacity-20 font-lato"
                 placeholder="Search InnoVentures"
               />
             </TooltipTrigger>
@@ -115,7 +115,7 @@ export const Header = () => {
         </div>
         <Tooltip>
           <TooltipTrigger asChild className="cursor-pointer">
-            <TfiHelpAlt className="text-white" />
+            <TfiHelpAlt className="text-white size-4 m-1" />
           </TooltipTrigger>
           <TooltipContent className="bg-tooltip_bg gap-1 flex flex-col text-white rounded-md font-lato font-bold">
             <p>Help</p>
