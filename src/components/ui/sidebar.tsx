@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Button,
   Tooltip,
@@ -18,11 +17,10 @@ import {
   useUsersContext,
   useWorkspaceContext,
 } from "@/contexts";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SidebarWorkspace } from "./workspace";
 
 export const Sidebar = () => {
-  const [activeMenu, setActiveMenu] = useState<string | null>("Home");
   const { collapse, activeWorkspace } = useLayoutContext();
   const { workspaces } = useWorkspaceContext();
   const { userData } = useUsersContext();
@@ -71,19 +69,19 @@ export const Sidebar = () => {
               }
             )}
           >
-            <Button
+            <Link
+              to={"/workspace/"}
               className="flex w-fit flex-col mx-auto gap-0.5 group"
-              onClick={() => setActiveMenu("Home")}
             >
               <div
                 className={classNames(
                   "size-8 flex justify-center mx-auto transition-all rounded-md hover:bg-menu_hover_bg items-center my-auto",
                   {
-                    "bg-active_menu_bg": activeMenu == "Home",
+                    "bg-active_menu_bg": location.pathname == "/workspace/",
                   }
                 )}
               >
-                {activeMenu == "Home" ? (
+                {location.pathname == "/workspace/" ? (
                   <GoHomeFill className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
                 ) : (
                   <GoHome className="group-hover:scale-125 size-5 text-white transition-all" />
@@ -92,20 +90,21 @@ export const Sidebar = () => {
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
                 Home
               </p>
-            </Button>
-            <Button
+            </Link>
+            <Link
+              to={"/workspace/messages"}
               className="flex w-fit flex-col gap-0.5 group"
-              onClick={() => setActiveMenu("Message")}
             >
               <div
                 className={classNames(
                   "size-8 flex justify-center mx-auto transition-all rounded-md hover:bg-menu_hover_bg items-center my-auto",
                   {
-                    "bg-active_menu_bg": activeMenu == "Message",
+                    "bg-active_menu_bg":
+                      location.pathname == "/workspace/messages",
                   }
                 )}
               >
-                {activeMenu == "Message" ? (
+                {location.pathname == "/workspace/messages" ? (
                   <IoChatbubblesSharp className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
                 ) : (
                   <IoChatbubblesOutline className="group-hover:scale-125 size-5 text-white transition-all" />
@@ -114,20 +113,21 @@ export const Sidebar = () => {
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
                 DMs
               </p>
-            </Button>
-            <Button
+            </Link>
+            <Link
+              to={"/workspace/activity"}
               className="flex w-fit justify-center flex-col gap-0.5 group"
-              onClick={() => setActiveMenu("Activity")}
             >
               <div
                 className={classNames(
                   "size-8 flex justify-center mx-auto transition-all rounded-md hover:bg-menu_hover_bg items-center my-auto",
                   {
-                    "bg-active_menu_bg": activeMenu == "Activity",
+                    "bg-active_menu_bg":
+                      location.pathname == "/workspace/activity",
                   }
                 )}
               >
-                {activeMenu == "Activity" ? (
+                {location.pathname == "/workspace/activity" ? (
                   <BiSolidBell className="group-hover:scale-125 size-5 leading-none w-fit text-white transition-all" />
                 ) : (
                   <BiBell className="group-hover:scale-125 size-5 text-white transition-all" />
@@ -136,20 +136,21 @@ export const Sidebar = () => {
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
                 Activity
               </p>
-            </Button>
-            <Button
+            </Link>
+            <Link
+              to={"/workspace/templates"}
               className="flex w-fit flex-col gap-0.5 group items-center"
-              onClick={() => setActiveMenu("Templates")}
             >
               <div
                 className={classNames(
                   "size-8 flex justify-center mx-auto transition-all rounded-md hover:bg-menu_hover_bg items-center my-auto",
                   {
-                    "bg-active_menu_bg": activeMenu == "Templates",
+                    "bg-active_menu_bg":
+                      location.pathname == "/workspace/templates",
                   }
                 )}
               >
-                {activeMenu == "Templates" ? (
+                {location.pathname == "/workspace/templates" ? (
                   <TbTools className="group-hover:scale-125 size-5 fill-white leading-none w-fit transition-all" />
                 ) : (
                   <TbTools className="group-hover:scale-125 size-5 text-white transition-all" />
@@ -158,20 +159,21 @@ export const Sidebar = () => {
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
                 Templates
               </p>
-            </Button>
-            <Button
+            </Link>
+            <Link
+              to={"/workspace/people"}
               className="flex w-fit flex-col gap-0.5 group items-center"
-              onClick={() => setActiveMenu("People")}
             >
               <div
                 className={classNames(
                   "size-8 flex justify-center mx-auto transition-all rounded-md hover:bg-menu_hover_bg items-center my-auto",
                   {
-                    "bg-active_menu_bg": activeMenu == "People",
+                    "bg-active_menu_bg":
+                      location.pathname == "/workspace/people",
                   }
                 )}
               >
-                {activeMenu == "People" ? (
+                {location.pathname == "/workspace/people" ? (
                   <PiAddressBookFill className="group-hover:scale-125 size-4 leading-none w-fit text-white transition-all" />
                 ) : (
                   <PiAddressBookBold className="group-hover:scale-125 size-4 text-white transition-all" />
@@ -180,16 +182,18 @@ export const Sidebar = () => {
               <p className="text-white text-[10px] font-lato text-center font-bold cursor-pointer leading-none">
                 People
               </p>
-            </Button>
-            <Button
-              className="flex w-fit flex-col gap-0.5 group items-center"
-              onClick={() => setActiveMenu("More")}
-            >
+            </Link>
+            <Button className="flex w-fit flex-col gap-0.5 group items-center">
               <div
                 className={classNames(
                   "size-8 flex justify-center mx-auto transition-all rounded-md hover:bg-menu_hover_bg items-center my-auto",
                   {
-                    "bg-active_menu_bg": activeMenu == "More",
+                    "bg-active_menu_bg":
+                      location.pathname == "/workspace/channels" ||
+                      location.pathname == "/workspace/automations" ||
+                      location.pathname == "/workspace/canvases" ||
+                      location.pathname == "/workspace/econnections" ||
+                      location.pathname == "/workspace/files",
                   }
                 )}
               >

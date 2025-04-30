@@ -14,7 +14,8 @@ export default {
         },
 
         primary: "var(--color-primary)",
-        input_bg: "#3E2142",
+        general_input_bg: "#3E2142",
+        input_bg: "#1a1d21",
         workspace_bg: "#616061",
         profile_flag_bg: "#442848",
         active_menu_bg: "#434f8c",

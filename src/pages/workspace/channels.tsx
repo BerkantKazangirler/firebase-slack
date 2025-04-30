@@ -1,21 +1,48 @@
+import { Button, Input } from "@/components";
 import { useLayoutContext } from "@/contexts";
 import classNames from "classnames";
+import { useState } from "react";
+import { CiSearch } from "react-icons/ci";
 
 export const Channels = () => {
   const { collapse } = useLayoutContext();
+  const [inputText, setInputText] = useState<string>("");
 
   return (
     <div
       className={classNames(
         //
-        "flex flex-row p-4 rounded-md bg-workspace_menus_bg transition-all duration-300 w-full",
+        "flex flex-col py-6 px-8 gap-4 rounded-md font-lato bg-workspace_menus_bg transition-all duration-300 w-full",
         {
           "translate-x-0": collapse,
           "-translate-x-[69px]": !collapse,
         }
       )}
     >
-      <span>asd</span>
+      <div className="flex flex-row justify-between w-full">
+        <p className="font-bold text-white text-lg">All channels</p>
+        <Button className="bg-black py-2 px-3 rounded-lg border border-white/20 font-bold text-sm text-white">
+          Create Channel
+        </Button>
+      </div>
+      <div className="w-full relative">
+        <CiSearch className="absolute text-white/60 z-20 text-xl my-1.5 ml-3" />
+        <Button
+          onClick={() => setInputText("")}
+          className={classNames("text-xs text-white/40 absolute right-3 my-2", {
+            flex: inputText !== "",
+            hidden: inputText == "",
+          })}
+        >
+          Clear
+        </Button>
+        <Input
+          placeholder="Seach for channels"
+          value={inputText}
+          onChange={(e) => setInputText(e.currentTarget.value)}
+          className="bg-input_bg w-full rounded-md indent-10 text-white/80 placeholder:text-white/50 text-sm py-2 border border-white/20 leading-none"
+        />
+      </div>
     </div>
   );
 };

@@ -98,7 +98,7 @@ export const Header = () => {
           <Tooltip>
             <TooltipTrigger asChild className="cursor-pointer">
               <Input
-                className="bg-input_bg text-xs w-full indent-2 opacity-80 placeholder:text-white text-white outline-none rounded-md border border-white border-opacity-20 font-lato"
+                className="bg-general_input_bg text-xs w-full indent-2 opacity-80 placeholder:text-white text-white outline-none rounded-md border border-white border-opacity-20 font-lato"
                 placeholder="Search InnoVentures"
               />
             </TooltipTrigger>
