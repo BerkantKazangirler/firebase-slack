@@ -1,10 +1,8 @@
 export { Button } from "./ui/button";
 export { Input } from "./ui/input";
-export { Workspace } from "./ui/workspace";
+export { Workspace } from "./ui/workspaces";
 export { Sidebar } from "./ui/sidebar";
 export { Header } from "./ui/header";
-
-export { AllPeople } from "./workspace/all-people";
 
 export {
   Tooltip,
@@ -28,4 +26,5 @@ export {
   DropdownMenuTrigger,
 } from "./ui/dropdown";
 
-export { MainLayout } from "./layout/main";
+export { WorkspaceLayout } from "./layout/workspace";
+export { UserLayout } from "./layout/user";

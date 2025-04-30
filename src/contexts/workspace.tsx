@@ -52,6 +52,28 @@ export const WorkspaceContextProvider = ({
         name: "coffe-break",
         public: false,
       },
+      {
+        id: "Z8hOz3sXZJNtvSdsadezyPVJ",
+        created_by: {
+          date: "02.21.2023",
+          owner: "NEVpDiIIn02JSYaYpXnj",
+        },
+        description: "test",
+        members: ["NEVpDiIIn02JSYaYpXnj", "uvGWgBUMyVRGhHNrd7IK"],
+        name: "show-test",
+        public: false,
+      },
+      {
+        id: "Z8hOz3sXZJNtvSdsadezyPVdJ",
+        created_by: {
+          date: "02.21.2023",
+          owner: "NEVpDiIIn02JSYaYpXnj",
+        },
+        description: "test",
+        members: ["NEVpDiIIn02JSYaYpXnj", "uvGWgBUMyVRGhHNrd7IK"],
+        name: "show-test-public",
+        public: true,
+      },
     ]);
 
     setWorkspaces([
@@ -75,7 +97,11 @@ export const WorkspaceContextProvider = ({
           "https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512",
         url: "innoventures-tech.slack.com2",
         premium: false,
-        channels: ["4QBgJ84ykpjTBKzLj63h"],
+        channels: [
+          "4QBgJ84ykpjTBKzLj63h",
+          "Z8hOz3sXZJNtvSdsadezyPVJ",
+          "Z8hOz3sXZJNtvSdsadezyPVdJ",
+        ],
         users: ["NEVpDiIIn02JSYaYpXnj", "uvGWgBUMyVRGhHNrd7IK"],
       },
     ]);

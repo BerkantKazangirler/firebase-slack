@@ -5,28 +5,15 @@ type DataContextType = {
   userList: UsersI[];
   setUserList: React.Dispatch<React.SetStateAction<UsersI[]>>;
 
-  userData: UsersI | null;
-  setUserData: React.Dispatch<React.SetStateAction<UsersI | null>>;
+  userData: UsersI;
+  setUserData: React.Dispatch<React.SetStateAction<UsersI>>;
 };
 
 const DataContext = createContext<DataContextType>({
   userList: [],
   setUserList: () => {},
 
-  userData: {
-    id: "",
-    name: "",
-    photo: "",
-    contact_info: {
-      email: "",
-      phone: "",
-    },
-    display_name: "",
-    email: "",
-    local_time: "",
-    status: "ONLINE",
-    title: null,
-  },
+  userData: {} as UsersI,
   setUserData: () => {},
 });
 
@@ -38,7 +25,7 @@ export const UserDataProvider = ({
   children: React.ReactNode;
 }) => {
   const [userList, setUserList] = useState<UsersI[]>([]);
-  const [userData, setUserData] = useState<UsersI | null>(null);
+  const [userData, setUserData] = useState<UsersI>({} as UsersI);
 
   useEffect(() => {
     setUserList([
@@ -81,7 +68,7 @@ export const UserDataProvider = ({
         email: "berkantkazangirler@gmail.com",
         phone: "0544 339 0993",
       },
-      display_name: "Berkant",
+      display_name: "Berkdant",
       email: "berkantkazangirler@gmail.com",
       local_time: "UTC",
       status: "ONLINE",
