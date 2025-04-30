@@ -1,5 +1,6 @@
 export interface MessagesI {
   id: string;
+  channelId: string;
   content: string;
   date: DateI[];
   sender_by: string;

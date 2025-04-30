@@ -7,7 +7,9 @@ export const WorkspaceLayout = () => {
   const { theme, collapse } = useLayoutContext();
 
   return (
-    <div className={`flex flex-col w-full h-screen bg-primary theme-${theme}`}>
+    <div
+      className={`flex flex-col overflow-x-hidden w-full h-screen bg-primary theme-${theme}`}
+    >
       <Header />
       <div className="flex flex-row h-full w-full">
         <div

@@ -20,7 +20,7 @@ export const Workspace = () => {
           className={classNames(
             "size-11 text-white cursor-pointer font-lato flex transition-all justify-center font-bold rounded-xl",
             {
-              "border-4": activeWorkspace == data.id,
+              "border border-blue-200/20": activeWorkspace == data.id,
             }
           )}
         >

@@ -35,7 +35,7 @@ export const SidebarWorkspace = () => {
   const [channelListShow, setChannelListShow] = useState<boolean>(true);
   const [messageListShow, setMessageListShow] = useState<boolean>(true);
   const [activePage, setActivePage] = useState<string | null>("");
-  const { activeWorkspace } = useLayoutContext();
+  const { activeWorkspace, collapse } = useLayoutContext();
 
   const { channelDatas, workspaces } = useWorkspaceContext();
   const { userList, userData } = useUsersContext();
@@ -47,7 +47,14 @@ export const SidebarWorkspace = () => {
   const takvim = monthNames[ay] + " " + gün;
 
   return (
-    <div className="flex flex-col w-full h-full bg-sidebar_bg">
+    <div
+      className={classNames(
+        "flex flex-col w-full max-w-[16%] border border-blue-200/20 h-full bg-sidebar_bg",
+        {
+          "rounded-l-md": !collapse,
+        }
+      )}
+    >
       <TooltipProvider>
         {workspaces
           .filter((data) => data.id == activeWorkspace)
@@ -354,36 +361,6 @@ export const SidebarWorkspace = () => {
                     {messageListShow ? (
                       <>
                         {userList
-                          .filter((data) => data.id == activePage)
-                          .map((data, index) => (
-                            <div
-                              key={index}
-                              data-page-name={data.id}
-                              onClick={(e) =>
-                                setActivePage(
-                                  e.currentTarget.getAttribute("data-page-name")
-                                )
-                              }
-                              className={classNames(
-                                "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
-                                {
-                                  "bg-active_channel_bg": activePage == data.id,
-                                }
-                              )}
-                            >
-                              <img
-                                src={data.photo}
-                                className="size-5 rounded-sm"
-                              />
-                              <span className="text-white/50 font-medium font-lato text-sm">
-                                {data.name}
-                              </span>
-                            </div>
-                          ))}
-                      </>
-                    ) : (
-                      <>
-                        {userList
                           .filter((data) => data.id !== userData?.id)
                           .map((data, index) => (
                             <div
@@ -437,6 +414,36 @@ export const SidebarWorkspace = () => {
                             you
                           </span>
                         </div>
+                      </>
+                    ) : (
+                      <>
+                        {userList
+                          .filter((data) => data.id == activePage)
+                          .map((data, index) => (
+                            <div
+                              key={index}
+                              data-page-name={data.id}
+                              onClick={(e) =>
+                                setActivePage(
+                                  e.currentTarget.getAttribute("data-page-name")
+                                )
+                              }
+                              className={classNames(
+                                "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
+                                {
+                                  "bg-active_channel_bg": activePage == data.id,
+                                }
+                              )}
+                            >
+                              <img
+                                src={data.photo}
+                                className="size-5 rounded-sm"
+                              />
+                              <span className="text-white/50 font-medium font-lato text-sm">
+                                {data.name}
+                              </span>
+                            </div>
+                          ))}
                       </>
                     )}
                   </div>

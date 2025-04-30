@@ -18,7 +18,6 @@ import {
   useWorkspaceContext,
 } from "@/contexts";
 import { Link, useLocation } from "react-router-dom";
-import { SidebarWorkspace } from "./workspace";
 
 export const Sidebar = () => {
   const { collapse, activeWorkspace } = useLayoutContext();
@@ -33,10 +32,17 @@ export const Sidebar = () => {
 
   return (
     <TooltipProvider>
-      <div className="h-full w-full flex flex-row rounded-md bg-sidebar_bg">
+      <div
+        className={classNames(
+          "h-full w-full flex flex-row rounded-l-md bg-sidebar_bg",
+          {
+            "rounded-r-md": !collapse,
+          }
+        )}
+      >
         <div
           className={classNames(
-            "px-3 py-4 transition-all h-full items-center flex flex-col gap-4 border-r-2 border-r-white border-opacity-10",
+            "px-3 py-4 transition-all h-full items-center flex flex-col gap-4",
             {
               "bg-primary": !collapse,
             }
@@ -235,7 +241,6 @@ export const Sidebar = () => {
             </Tooltip>
           </div>
         </div>
-        {location.pathname === "/workspace" && <SidebarWorkspace />}
       </div>
     </TooltipProvider>
   );

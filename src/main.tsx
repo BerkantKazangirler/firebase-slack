@@ -3,6 +3,7 @@ import "./index.css";
 // import App from "./App.tsx";
 import {
   LayoutContextProvider,
+  MessagesProvider,
   UserDataProvider,
   WorkspaceContextProvider,
 } from "@/contexts";
@@ -42,9 +43,11 @@ const router = createBrowserRouter(
 createRoot(document.getElementById("root")!).render(
   <UserDataProvider>
     <WorkspaceContextProvider>
-      <LayoutContextProvider>
-        <RouterProvider router={router} />
-      </LayoutContextProvider>
+      <MessagesProvider>
+        <LayoutContextProvider>
+          <RouterProvider router={router} />
+        </LayoutContextProvider>
+      </MessagesProvider>
     </WorkspaceContextProvider>
   </UserDataProvider>
 );
