@@ -30,12 +30,13 @@ import {
 import Avatar from "react-avatar";
 import { GoPlus } from "react-icons/go";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
+import { Link } from "react-router-dom";
 
 export const SidebarWorkspace = () => {
   const [channelListShow, setChannelListShow] = useState<boolean>(true);
   const [messageListShow, setMessageListShow] = useState<boolean>(true);
-  const [activePage, setActivePage] = useState<string | null>("");
-  const { activeWorkspace, collapse } = useLayoutContext();
+  const { activeWorkspace, collapse, setActiveChannelId, activeChannelId } =
+    useLayoutContext();
 
   const { channelDatas, workspaces } = useWorkspaceContext();
   const { userList, userData } = useUsersContext();
@@ -241,14 +242,15 @@ export const SidebarWorkspace = () => {
                             key={index}
                             data-page-name={data.id}
                             onClick={(e) =>
-                              setActivePage(
+                              setActiveChannelId(
                                 e.currentTarget.getAttribute("data-page-name")
                               )
                             }
                             className={classNames(
                               "flex flex-row gap-3 px-1 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
                               {
-                                "bg-active_channel_bg": activePage == data.id,
+                                "bg-active_channel_bg":
+                                  activeChannelId == data.id,
                               }
                             )}
                           >
@@ -279,7 +281,9 @@ export const SidebarWorkspace = () => {
                             <Button>Create a new channel</Button>
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <Button>Browse channels</Button>
+                            <Link to="/workspace/channels">
+                              Browse channels
+                            </Link>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -287,20 +291,21 @@ export const SidebarWorkspace = () => {
                   ) : (
                     <>
                       {channelDatas
-                        .filter((data) => data.id == activePage)
+                        .filter((data) => data.id == activeChannelId)
                         .map((data, index) => (
                           <Button
                             key={index}
                             data-page-name={data.id}
                             onClick={(e) =>
-                              setActivePage(
+                              setActiveChannelId(
                                 e.currentTarget.getAttribute("data-page-name")
                               )
                             }
                             className={classNames(
                               "flex flex-row gap-3 px-1 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
                               {
-                                "bg-active_channel_bg": activePage == data.id,
+                                "bg-active_channel_bg":
+                                  activeChannelId == data.id,
                               }
                             )}
                           >
@@ -367,14 +372,15 @@ export const SidebarWorkspace = () => {
                               key={index}
                               data-page-name={data.id}
                               onClick={(e) =>
-                                setActivePage(
+                                setActiveChannelId(
                                   e.currentTarget.getAttribute("data-page-name")
                                 )
                               }
                               className={classNames(
                                 "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
                                 {
-                                  "bg-active_channel_bg": activePage == data.id,
+                                  "bg-active_channel_bg":
+                                    activeChannelId == data.id,
                                 }
                               )}
                             >
@@ -391,7 +397,7 @@ export const SidebarWorkspace = () => {
                           key={index}
                           data-page-name={userData?.id}
                           onClick={(e) =>
-                            setActivePage(
+                            setActiveChannelId(
                               e.currentTarget.getAttribute("data-page-name")
                             )
                           }
@@ -399,7 +405,7 @@ export const SidebarWorkspace = () => {
                             "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
                             {
                               "bg-active_channel_bg":
-                                activePage == userData?.id,
+                                activeChannelId == userData?.id,
                             }
                           )}
                         >
@@ -418,20 +424,21 @@ export const SidebarWorkspace = () => {
                     ) : (
                       <>
                         {userList
-                          .filter((data) => data.id == activePage)
+                          .filter((data) => data.id == activeChannelId)
                           .map((data, index) => (
                             <div
                               key={index}
                               data-page-name={data.id}
                               onClick={(e) =>
-                                setActivePage(
+                                setActiveChannelId(
                                   e.currentTarget.getAttribute("data-page-name")
                                 )
                               }
                               className={classNames(
                                 "flex cursor-pointer flex-row gap-2 px-4 hover:bg-white/10 h-7 items-center transition-all rounded-sm",
                                 {
-                                  "bg-active_channel_bg": activePage == data.id,
+                                  "bg-active_channel_bg":
+                                    activeChannelId == data.id,
                                 }
                               )}
                             >

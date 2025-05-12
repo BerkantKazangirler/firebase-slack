@@ -21,6 +21,7 @@ export default {
         active_menu_bg: "#434f8c",
         menu_hover_bg: "#434f8c",
         tooltip_bg: "#212428",
+        message_action_menu_border: "#DDDDDD",
         workspace_menus_bg: "#222529",
         sidebar_bg: "var(--color-sidebar_bg)",
         active_channel_bg: "#263b9c",

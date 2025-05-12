@@ -6,7 +6,6 @@ import {
   TbLayoutSidebarLeftCollapseFilled,
 } from "react-icons/tb";
 import { TfiHelpAlt } from "react-icons/tfi";
-import { RxHamburgerMenu } from "react-icons/rx";
 import {
   Button,
   Tooltip,
@@ -24,8 +23,6 @@ export const Header = () => {
     <TooltipProvider>
       <div className="w-full flex flex-row p-2 justify-between">
         <div className="flex flex-row gap-8 px-3">
-          <RxHamburgerMenu className="text-white" />
-
           <Tooltip>
             <TooltipTrigger asChild>
               <Button

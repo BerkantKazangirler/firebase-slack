@@ -7,6 +7,8 @@ type LayoutContextType = {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
   activeWorkspace: string | null;
   setActiveWorkspace: React.Dispatch<React.SetStateAction<string | null>>;
+  activeChannelId: string | null;
+  setActiveChannelId: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 const LayoutContext = createContext<LayoutContextType>({
@@ -16,6 +18,8 @@ const LayoutContext = createContext<LayoutContextType>({
   setTheme: () => {},
   activeWorkspace: "",
   setActiveWorkspace: () => {},
+  activeChannelId: "",
+  setActiveChannelId: () => {},
 });
 
 export const useLayoutContext = () => useContext(LayoutContext);
@@ -31,6 +35,9 @@ export const LayoutContextProvider = ({
   const [activeWorkspace, setActiveWorkspace] = useState<string | null>(
     "innoventures_user_001"
   );
+  const [activeChannelId, setActiveChannelId] = useState<string | null>(
+    "4QBgJ84ykpjTBKzLj63h"
+  );
 
   return (
     <LayoutContext.Provider
@@ -41,6 +48,8 @@ export const LayoutContextProvider = ({
         setTheme,
         activeWorkspace,
         setActiveWorkspace,
+        activeChannelId,
+        setActiveChannelId,
       }}
     >
       {children}
