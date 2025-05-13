@@ -31,6 +31,8 @@ import Avatar from "react-avatar";
 import { GoPlus } from "react-icons/go";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Link } from "react-router-dom";
+import { CreateChannel } from "@/pages";
+import { Dialog, DialogContent, DialogTrigger } from "./dialog";
 
 export const SidebarWorkspace = () => {
   const [channelListShow, setChannelListShow] = useState<boolean>(true);
@@ -265,28 +267,35 @@ export const SidebarWorkspace = () => {
                           </Button>
                         ))}
 
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button className="flex flex-row hover:bg-white/10 rounded-sm p-1 gap-2">
-                            <div className="bg-[#0f1530] rounded-sm p-0.5">
-                              <GoPlus className="text-white" />
-                            </div>
-                            <span className="text-white/40 w-full flex justify-start font-lato text-sm">
-                              Add channels
-                            </span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-48 py-2 font-lato border border-white/20">
-                          <DropdownMenuItem>
-                            <Button>Create a new channel</Button>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <Link to="/workspace/channels">
-                              Browse channels
-                            </Link>
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+                      <Dialog>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button className="flex flex-row hover:bg-white/10 rounded-sm p-1 gap-2">
+                              <div className="bg-[#0f1530] rounded-sm p-0.5">
+                                <GoPlus className="text-white" />
+                              </div>
+                              <span className="text-white/40 w-full flex justify-start font-lato text-sm">
+                                Add channels
+                              </span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="w-48 py-2 font-lato border border-white/20">
+                            <DropdownMenuItem>
+                              <DialogTrigger>
+                                Create a new channel
+                              </DialogTrigger>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Link to="/workspace/channels">
+                                Browse channels
+                              </Link>
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                        <DialogContent className="p-0 max-w-[800px]">
+                          <CreateChannel />
+                        </DialogContent>
+                      </Dialog>
                     </>
                   ) : (
                     <>

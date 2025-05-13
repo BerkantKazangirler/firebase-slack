@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import {
   useLayoutContext,
+  useMesageContext,
   useUsersContext,
   useWorkspaceContext,
 } from "@/contexts";
@@ -33,18 +34,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useQuill } from "react-quilljs";
+import "quill/dist/quill.snow.css";
 
 export const Workspace = () => {
   const { collapse, activeChannelId } = useLayoutContext();
   const { channelDatas } = useWorkspaceContext();
   const { userList } = useUsersContext();
+  const { messages } = useMesageContext();
 
   const activeChannelData = channelDatas.find(
     (data) => data.id === activeChannelId
   );
 
+  const { quillRef } = useQuill();
+
   const [activeHeader, setActiveHeader] = useState<string>("message");
   const [activeChannelTabs, setActiveChannelTabs] = useState<string>("about");
+
+  const messagesData = messages.filter(
+    (data) => data.channelId === activeChannelData?.id
+  );
 
   function channelOwnerData() {
     return userList.find(
@@ -320,39 +330,40 @@ export const Workspace = () => {
               </TabsList>
               <TabsContent
                 value="message"
-                className="px-7 py-2 flex flex-col w-full h-full"
+                className="gap-3 flex flex-col w-full h-full"
               >
-                <div className="flex flex-row relative w-full gap-3 group">
-                  <img
-                    src="https://ca.slack-edge.com/T04DR8P7QSX-U07BQHBHAV6-2f2435a96a1a-512"
-                    className="rounded-sm size-9"
-                  />
-                  <div className="flex flex-col">
-                    <div className="flex flex-row gap-2 h-fit">
-                      <span className="text-white font-semibold text-[15px]">
-                        Test Test
-                      </span>
-                      <span className="text-xs text-[#6F6F6F] my-auto">
-                        9:44 AM
-                      </span>
+                {messagesData.length > 0 ? (
+                  messagesData.map((data, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-row relative w-full hover:bg-white/10 transition-all gap-3 px-7 py-2 group"
+                    >
+                      <div
+                        className="flex flex-row gap-3"
+                        dangerouslySetInnerHTML={{ __html: data.content }}
+                      />
+                      <div className="hidden flex-row absolute right-5 py-1 px-2 bg-white rounded-md border border-message_action_menu_border group-hover:flex">
+                        <Button className="hover:bg-black/10 transition-all">
+                          <MdOutlineAddReaction className="text-sm" />
+                        </Button>
+                      </div>
                     </div>
-                    <p className="text-white font-lato">
-                      것이 밥을 하는 산야에 얼마나 이 보라. 미인을 것은 아름답고
-                      투명하되 미묘한 내려온 시들어 없는 꽃이 듣는다. 우는
-                      인생에 그들에게 것이 교향악이다. 자신과 인류의 인간에
-                      날카로우나 못할 피다. 뼈의 그들은 있
-                    </p>
+                  ))
+                ) : (
+                  <div className="flex absolute text-white/50 font-lato font-semibold text-xl top-[47%] justify-center w-full">
+                    Bu kanalda mesaj yok
                   </div>
-                  <div className="hidden flex-row absolute right-5 py-1 px-2 bg-white rounded-md border border-message_action_menu_border group-hover:flex">
-                    <Button className="hover:bg-black/10 transition-all">
-                      <MdOutlineAddReaction className="text-sm" />
-                    </Button>
-                  </div>
-                </div>
+                )}
 
-                <div className="flex flex-col absolute bottom-0">
-                  <div className="flex flex-row">
-                    <span>asd</span>
+                <div className="flex flex-col w-full absolute bottom-10 px-5">
+                  <div className="w-full h-[100px]">
+                    <div
+                      ref={quillRef}
+                      className="text-white"
+                      style={{
+                        fontFamily: "Lato",
+                      }}
+                    />
                   </div>
                 </div>
               </TabsContent>
