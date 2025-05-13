@@ -292,7 +292,7 @@ export const SidebarWorkspace = () => {
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
-                        <DialogContent className="p-0 max-w-[800px]">
+                        <DialogContent className="p-0 max-w-[1000px] border-white/30">
                           <CreateChannel />
                         </DialogContent>
                       </Dialog>
