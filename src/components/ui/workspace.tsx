@@ -240,7 +240,8 @@ export const SidebarWorkspace = () => {
                             dataa.members.includes(userData.id)
                         )
                         .map((data, index) => (
-                          <Button
+                          <Link
+                            to={`/workspace/${data.id}`}
                             key={index}
                             data-page-name={data.id}
                             onClick={(e) =>
@@ -264,7 +265,7 @@ export const SidebarWorkspace = () => {
                             <span className="text-white/50 font-medium font-lato text-sm">
                               {data.name}
                             </span>
-                          </Button>
+                          </Link>
                         ))}
 
                       <Dialog>

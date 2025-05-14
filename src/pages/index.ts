@@ -1,6 +1,6 @@
 export { Home } from "./home"
 
-export { Workspace as WorkspaceMain } from "./workspace/main"
 export { AllPeople } from "./workspace/all-people"
 export { Channels } from "./workspace/channels"
 export { CreateChannel } from "./workspace/create-channel"
+export { Message } from "./workspace/message"

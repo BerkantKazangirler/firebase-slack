@@ -8,7 +8,7 @@ import {
   WorkspaceContextProvider,
 } from "@/contexts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AllPeople, Channels, Home, WorkspaceMain } from "@/pages";
+import { AllPeople, Channels, Home, Message } from "@/pages";
 import { WorkspaceLayout, UserLayout } from "@/components";
 
 const router = createBrowserRouter(
@@ -22,7 +22,8 @@ const router = createBrowserRouter(
       path: "/workspace/",
       element: <WorkspaceLayout />,
       children: [
-        { path: "/workspace/", element: <WorkspaceMain /> },
+        { path: "/workspace/", element: <Message /> },
+        { path: "/workspace/:id", element: <Message /> },
         { path: "/workspace/messages", element: <AllPeople /> },
         { path: "/workspace/activity", element: <AllPeople /> },
         { path: "/workspace/templates", element: <AllPeople /> },

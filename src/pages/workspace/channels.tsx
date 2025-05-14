@@ -11,6 +11,7 @@ import { CgLock } from "react-icons/cg";
 import { CiSearch } from "react-icons/ci";
 import { FaHashtag } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export const Channels = () => {
   const { collapse, activeWorkspace } = useLayoutContext();
@@ -137,9 +138,12 @@ export const Channels = () => {
                           </div>
                         </div>
                         <div className="group-hover:flex right-6 absolute flex-row gap-2 hidden text-white">
-                          <Button className="bg-black p-2 text-sm border border-white/50 rounded-md">
+                          <Link
+                            to={`/workspace/${data.id}`}
+                            className="bg-black p-2 text-sm border border-white/50 rounded-md"
+                          >
                             Open in Home
-                          </Button>
+                          </Link>
                           <Button
                             onClick={() =>
                               joinChannel({

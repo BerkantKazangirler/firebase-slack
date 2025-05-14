@@ -1,11 +1,9 @@
-import classNames from "classnames";
 import {
   useLayoutContext,
   useMesageContext,
   useUsersContext,
   useWorkspaceContext,
 } from "@/contexts";
-import { SidebarWorkspace } from "@/components/ui/workspace";
 import { CgFileDocument, CgHeadset, CgLock } from "react-icons/cg";
 import { IoChevronDown } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
@@ -36,9 +34,12 @@ import {
 } from "@/components/ui/dialog";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
+import classNames from "classnames";
+import { SidebarWorkspace } from "@/components/ui/workspace";
 
-export const Workspace = () => {
-  const { collapse, activeChannelId } = useLayoutContext();
+export const Message = () => {
+  const { activeChannelId, collapse } = useLayoutContext();
+
   const { channelDatas } = useWorkspaceContext();
   const { userList } = useUsersContext();
   const { messages } = useMesageContext();
@@ -61,7 +62,6 @@ export const Workspace = () => {
       (data) => data.id === activeChannelData?.created_by.owner
     )?.name;
   }
-
   return (
     <TooltipProvider>
       <div
