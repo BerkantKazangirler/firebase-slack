@@ -52,7 +52,6 @@ export const AllPeople = () => {
     ]);
   }, []);
 
-  console.log(userData);
   return (
     <div className="w-full px-6 py-4 gap-3 flex flex-col rounded-md bg-input_bg h-full">
       <div className="flex flex-row w-full h-fit justify-between">

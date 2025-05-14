@@ -97,7 +97,6 @@ export const Channels = () => {
                     .map((data, index) => (
                       <div
                         key={index}
-                        onClick={() => console.log(data.members)}
                         className="flex flex-col relative border-b group border-white/10 p-6"
                       >
                         <div className="flex flex-row gap-1.5">
