@@ -11,7 +11,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components";
-import { monthNames, WorkSpaceI } from "@/types/workspace";
+import { monthNames, WorkSpaceI } from "@/types";
 import Avatar from "react-avatar";
 import { FaCaretDown } from "react-icons/fa";
 import { IoRocketOutline } from "react-icons/io5";

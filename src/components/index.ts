@@ -41,3 +41,4 @@ export {
 
 export { WorkspaceSelector } from "./ui/workspace-selector";
 export { DirectHeader } from "./direct-message-header";
+export { ChannelHeader } from "./channel-header";

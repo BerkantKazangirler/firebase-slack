@@ -27,7 +27,7 @@ export const Message = () => {
 
   return (
     <>
-      {location.pathname === `/workspace/${activeChannelId}/message` && (
+      {location.pathname === `/workspace/${activeChannelId}` && (
         <div className="gap-3 flex flex-col w-full h-full">
           {messagesData.length > 0 ? (
             messagesData.map((data, index) => (

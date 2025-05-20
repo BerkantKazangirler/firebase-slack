@@ -1,8 +1,10 @@
 import { useLayoutContext } from "@/contexts";
-import { TooltipProvider } from "@/components";
 import classNames from "classnames";
-import { WorkspaceSelector } from "@/components/ui/workspace-selector";
-import { ChannelHeader } from "@/components/channel-header";
+import {
+  WorkspaceSelector,
+  ChannelHeader,
+  TooltipProvider,
+} from "@/components";
 
 export const ChannelLayout = () => {
   const { collapse } = useLayoutContext();

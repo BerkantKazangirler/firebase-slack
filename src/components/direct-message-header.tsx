@@ -6,7 +6,11 @@ import {
   DialogContent,
   DialogHeader,
   DialogTrigger,
-} from "@/components/ui/dialog";
+  Button,
+  TooltipTrigger,
+  Tooltip,
+  TooltipContent,
+} from "@/components";
 import { CgFileDocument, CgHeadset } from "react-icons/cg";
 import { IoChevronDown } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
@@ -21,10 +25,9 @@ import {
   useUsersContext,
   useWorkspaceContext,
 } from "@/contexts";
-import { Button, TooltipTrigger, Tooltip, TooltipContent } from "@/components";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import { Message } from "@/pages/workspace/channel/message";
+import { Message } from "@/pages";
 import Avatar from "react-avatar";
 
 export const DirectHeader = () => {

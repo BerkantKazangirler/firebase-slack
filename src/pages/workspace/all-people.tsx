@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
   Input,
 } from "@/components";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components";
 import { UsersI } from "@/types";
 import { useEffect, useState } from "react";
 import Avatar from "react-avatar";

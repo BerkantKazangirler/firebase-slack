@@ -38,7 +38,7 @@ export const ChannelHeader = () => {
   );
 
   const [activeHeader, setActiveHeader] = useState<string>("message");
-  const [activeChannelTabs, setActiveChannelTabs] = useState<string>("about");
+  const [activeChannelTabs, setActiveChannelTabs] = useState<string>("message");
 
   function channelOwnerData() {
     return userList.find(
@@ -247,7 +247,7 @@ export const ChannelHeader = () => {
 
       <div className="flex flex-row border-b-[3px] border-white/10 px-7 gap-2">
         <Link
-          to={`/workspace/${activeChannelId}/message`}
+          to={`/workspace/${activeChannelId}`}
           className={classNames(
             "text-white gap-2 pb-1 font-lato flex rounded-t-md pt-1 hover:bg-white/10 font-bold transition-all duration-75 px-1.5 border-white",
             {

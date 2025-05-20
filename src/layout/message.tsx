@@ -1,7 +1,6 @@
 import { useLayoutContext } from "@/contexts";
-import { DirectHeader, TooltipProvider } from "@/components";
+import { DirectHeader, TooltipProvider, WorkspaceSelector } from "@/components";
 import classNames from "classnames";
-import { WorkspaceSelector } from "@/components/ui/workspace-selector";
 
 export const MessageLayout = () => {
   const { collapse } = useLayoutContext();
