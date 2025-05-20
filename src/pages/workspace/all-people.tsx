@@ -8,7 +8,6 @@ import {
   Input,
 } from "@/components";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { useUsersContext } from "@/contexts";
 import { UsersI } from "@/types";
 import { useEffect, useState } from "react";
 import Avatar from "react-avatar";
@@ -17,8 +16,6 @@ import { HiChevronDown } from "react-icons/hi";
 import { LuListFilter } from "react-icons/lu";
 
 export const AllPeople = () => {
-  const { userData } = useUsersContext();
-
   const [userTestData, setUserTestData] = useState<UsersI[]>([]);
 
   useEffect(() => {
@@ -173,7 +170,7 @@ export const AllPeople = () => {
             className="bg-white/5 h-full border flex flex-col border-white/5 rounded-md"
           >
             <Avatar
-              title
+              title={data?.name}
               name={data?.display_name}
               src={data?.photo}
               size="120"

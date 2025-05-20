@@ -25,7 +25,7 @@ export const Workspace = () => {
           )}
         >
           <Avatar
-            title
+            title={data.title}
             name={data.title}
             src={data.photo}
             size="32"

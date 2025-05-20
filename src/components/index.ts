@@ -12,6 +12,19 @@ export {
 } from "./ui/tooltip";
 
 export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+
+export {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -26,5 +39,5 @@ export {
   DropdownMenuTrigger,
 } from "./ui/dropdown";
 
-export { WorkspaceLayout } from "./layout/workspace";
-export { UserLayout } from "./layout/user";
+export { WorkspaceSelector } from "./ui/workspace-selector";
+export { DirectHeader } from "./direct-message-header";

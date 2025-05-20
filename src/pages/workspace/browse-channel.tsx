@@ -13,7 +13,7 @@ import { FaHashtag } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-export const Channels = () => {
+export const BrowseChannels = () => {
   const { collapse, activeWorkspace } = useLayoutContext();
   const { userData } = useUsersContext();
   const { channelDatas, workspaces, setChannelDatas } = useWorkspaceContext();
@@ -30,9 +30,9 @@ export const Channels = () => {
     setChannelDatas([...channelDatas, updatedOda]);
   };
 
-  const leaveChannel = (id: string) => {
-    setChannelDatas(channelDatas.filter((data) => data.id !== id));
-  };
+  // const leaveChannel = (id: string) => {
+  //   setChannelDatas(channelDatas.filter((data) => data.id !== id));
+  // };
 
   return (
     <div

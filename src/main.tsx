@@ -8,8 +8,13 @@ import {
   WorkspaceContextProvider,
 } from "@/contexts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AllPeople, Channels, Home, Message } from "@/pages";
-import { WorkspaceLayout, UserLayout } from "@/components";
+import { AllPeople, BrowseChannels, Home } from "@/pages";
+import {
+  ChannelLayout,
+  MessageLayout,
+  UserLayout,
+  WorkspaceLayout,
+} from "@/layout";
 
 const router = createBrowserRouter(
   [
@@ -22,17 +27,25 @@ const router = createBrowserRouter(
       path: "/workspace/",
       element: <WorkspaceLayout />,
       children: [
-        { path: "/workspace/", element: <Message /> },
-        { path: "/workspace/:id", element: <Message /> },
+        { path: "/workspace/", element: <ChannelLayout /> },
+        { path: "/workspace/:id", element: <ChannelLayout /> },
+        { path: "/workspace/:id/message", element: <ChannelLayout /> },
+        { path: "/workspace/:id/files", element: <ChannelLayout /> },
+        { path: "/workspace/:id/untitled", element: <ChannelLayout /> },
+
+        { path: "/workspace/message/:id", element: <MessageLayout /> },
+        { path: "/workspace/message/:id/canvas", element: <MessageLayout /> },
+        { path: "/workspace/message/:id/files", element: <MessageLayout /> },
+
         { path: "/workspace/messages", element: <AllPeople /> },
         { path: "/workspace/activity", element: <AllPeople /> },
         { path: "/workspace/templates", element: <AllPeople /> },
         { path: "/workspace/people", element: <AllPeople /> },
-        { path: "/workspace/channels", element: <Channels /> },
-        { path: "/workspace/automations", element: <Channels /> },
-        { path: "/workspace/canvases", element: <Channels /> },
-        { path: "/workspace/files", element: <Channels /> },
-        { path: "/workspace/econnections", element: <Channels /> },
+        { path: "/workspace/channels", element: <BrowseChannels /> },
+        { path: "/workspace/automations", element: <BrowseChannels /> },
+        { path: "/workspace/canvases", element: <BrowseChannels /> },
+        { path: "/workspace/files", element: <BrowseChannels /> },
+        { path: "/workspace/econnections", element: <BrowseChannels /> },
       ],
     },
   ],

@@ -58,7 +58,7 @@ export const Sidebar = () => {
             )}
           >
             <Avatar
-              title
+              title={activeWorkspaceDatas?.title}
               name={activeWorkspaceDatas?.title}
               size="40"
               src={activeWorkspaceDatas?.photo}
