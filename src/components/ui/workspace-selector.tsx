@@ -271,7 +271,8 @@ export const WorkspaceSelector = () => {
                               </span>
                             </Link>
                           ))}
-                        <div
+                        <Link
+                          to={`/workspace/message/${data.id}`}
                           key={index}
                           data-page-name={userData?.id}
                           onClick={(e) =>
@@ -297,7 +298,7 @@ export const WorkspaceSelector = () => {
                           <span className="text-white/20 font-medium font-lato text-sm">
                             you
                           </span>
-                        </div>
+                        </Link>
                       </>
                     ) : (
                       // kişisel
